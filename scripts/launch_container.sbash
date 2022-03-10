@@ -1,0 +1,15 @@
+#!/bin/bash
+#$1 es el directorio donde se encuentran los archivos de entrada
+#$2 es el nombre del archivo de entrada que se evaluará
+
+rm -r -f /tmp/$$.tmp
+mkdir -p /tmp/$$.tmp
+mkdir /tmp/$$.tmp/results
+cd /tmp/$$.tmp
+cp $1/$2 /tmp/$$.tmp
+
+/./solver.bin /tmp/$$.tmp/$2 /tmp/$$.tmp/results $2
+
+cp /tmp/$$.tmp/results/* $3
+cd $HOME
+rm -r -f /tmp/$$.tmp
